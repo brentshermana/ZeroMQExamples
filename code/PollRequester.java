@@ -7,7 +7,7 @@ public class PollRequester {
       request.connect("tcp://localhost:5558");
 
       String latest = "Nothing Yet";
-      while (!Thread.currentThread.isInterrupted()) {
+      while (!Thread.currentThread().isInterrupted()) {
          request.send("Give me something!");
          System.out.println(request.recvStr());
       }

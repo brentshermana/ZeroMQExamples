@@ -14,7 +14,7 @@ public class PollServer {
       poller.register(reply);
 
       String latest = "Nothing Yet";
-      while (!Thread.currentThread.isInterrupted()) {
+      while (!Thread.currentThread().isInterrupted()) {
          poller.poll();
          if (poller.pollin(0)) {
             latest = stream.recvStr();

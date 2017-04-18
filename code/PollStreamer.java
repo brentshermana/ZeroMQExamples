@@ -9,7 +9,7 @@ public class PollStreamer {
       String[] messages = new String[]{"A", "B", "C", "D", "E"};
 
       int index = 0;
-      while (!Thread.currentThread.isInterrupted()) {
+      while (!Thread.currentThread().isInterrupted()) {
          index++;
          if (index == messages.length) index=0;
 
