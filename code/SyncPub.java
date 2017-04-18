@@ -8,7 +8,7 @@ Synchronized publisher.
 */
 public class SyncPub {
 
-    public static void main (String[] args) {
+    public static void main (String[] args) throws InterruptedException {
         Context context = ZMQ.context(1);
 
         //  Socket to talk to clients
@@ -30,12 +30,16 @@ public class SyncPub {
 
         boolean synced = false;
         while (!synced) {
-           if (syncPoller.pollIn(0)) {
+System.out.println("wait loop");
+           syncPoller.poll(1);
+           if (syncPoller.pollin(0)) {
+System.out.println("sync");
                syncservice.recvStr();
                syncservice.send("Okay here goes");
                synced = true;
            }
            else {
+System.out.println("still waiting");
              publisher.send("SYNC");
              Thread.sleep(1);
            }
