@@ -11,7 +11,7 @@ public class PollStreamer {
       int index = 0;
       while (!Thread.currentThread().isInterrupted()) {
          index++;
-         if (index == messages.length) index=0;
+         if (index >= messages.length) index=0;
 
          stream.send(messages[index]);
          Thread.sleep(10);
