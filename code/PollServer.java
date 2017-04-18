@@ -1,3 +1,4 @@
+import org.zeromq.ZMQ;
 public class PollServer {
    public static void main(String[] args) {
       ZMQ.Context context = ZMQ.context(1);
@@ -13,7 +14,7 @@ public class PollServer {
       poller.register(reply);
 
       String latest = "Nothing Yet";
-      while (!Thread.isInterrupted()) {
+      while (!Thread.currentThread.isInterrupted()) {
          poller.poll();
          if (poller.pollin(0)) {
             latest = stream.recvStr();
