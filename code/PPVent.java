@@ -27,9 +27,9 @@ public class PPVent {
         //  Send 100 tasks
         int total = 0;
         for (int i = 0; i < 100; i++) {
-            int workload = rand.nextInt(100) + 1;
+            int workload = rand.nextInt(200) + 1;
             total += workload;
-            System.out.print("Workload " + workload);
+            System.out.println("Workload " + workload);
             sender.send(Integer.toString(workload));
         }
         

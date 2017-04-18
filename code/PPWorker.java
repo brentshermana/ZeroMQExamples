@@ -30,7 +30,7 @@ public class PPWorker {
             Thread.sleep(msec);
 
             //  Send results to sink
-            sender.send("".getBytes(), 0);
+            sender.send(Long.toString(msec), 0);
         }
         sender.close();
         receiver.close();
