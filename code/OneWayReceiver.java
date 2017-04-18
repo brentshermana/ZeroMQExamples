@@ -1,23 +1,29 @@
-import java.util.StringTokenizer;
 import org.zeromq.ZMQ;
+import org.zeromq.ZMQ.Context;
+import org.zeromq.ZMQ.Socket;
+
+/**
+* Pubsub envelope subscriber
+*/
 
 public class OneWayReceiver {
 
     public static void main (String[] args) {
-        ZMQ.Context context = ZMQ.context(1);
 
-        //  Socket to talk to server
-        System.out.println("Collecting 100 values");
-        ZMQ.Socket subscriber = context.socket(ZMQ.SUB);
-        subscriber.connect("tcp://localhost:5557");
+        // Prepare our context and subscriber
+        Context context = ZMQ.context(1);
+        Socket subscriber = context.socket(ZMQ.SUB);
 
-        int sum = 0;
-        for (int i = 0; i < 100; i++) {
-           sum += Integer.parseInt(subscriber.recvStr());
+        subscriber.connect("tcp://localhost:5563");
+        subscriber.subscribe("B".getBytes());
+        while (!Thread.currentThread ().isInterrupted ()) {
+            // Read envelope with address
+            String address = subscriber.recvStr ();
+            // Read message contents
+            String contents = subscriber.recvStr ();
+            System.out.println(address + " : " + contents);
         }
-
-        System.out.println("Average is " + sum/10.0);
-        subscriber.close();
-        context.term();
+        subscriber.close ();
+        context.term ();
     }
 }
