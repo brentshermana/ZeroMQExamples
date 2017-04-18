@@ -1,7 +1,7 @@
 import org.zeromq.ZMQ;
-
+//request reply model, matches server paradigm
 public class HWServer {
-    //this is a CONCURRENT server
+
     public static void main(String[] args) throws Exception {
         ZMQ.Context context = ZMQ.context(1);
 

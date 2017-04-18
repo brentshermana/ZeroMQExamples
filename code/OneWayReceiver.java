@@ -3,6 +3,7 @@
 import java.util.StringTokenizer;
 import org.zeromq.ZMQ;
 
+//pub sub
 //
 //  Weather update client in Java
 //  Connects SUB socket to tcp://localhost:5556
@@ -39,9 +40,8 @@ public class OneWayReceiver {
         }
         System.out.println("Average temperature for zipcode '"
                 + filter + "' was " + (int) (total_temp / update_nbr));
-        
+
         subscriber.close();
         context.term();
     }
 }
-
