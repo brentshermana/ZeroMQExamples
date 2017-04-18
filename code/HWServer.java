@@ -11,8 +11,8 @@ public class HWServer {
 
         while (!Thread.currentThread().isInterrupted()) {
             // Wait for next request from the client
-            byte[] request = responder.recv(0);
-            System.out.println("Received Hello");
+            String in = responder.recvStr();
+            System.out.println("Received " + in);
 
             // Do some 'work'
             Thread.sleep(1000);
