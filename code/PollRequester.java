@@ -1,6 +1,6 @@
 import org.zeromq.ZMQ;
 public class PollRequester {
-   public static void main(String[] args) {
+   public static void main(String[] args) throws Exception {
       ZMQ.Context context = ZMQ.context(1);
 
       ZMQ.Socket request = context.socket(ZMQ.REQ);
@@ -10,6 +10,8 @@ public class PollRequester {
       while (!Thread.currentThread().isInterrupted()) {
          request.send("Give me something!");
          System.out.println(request.recvStr());
+
+         Thread.sleep(200);
       }
 
       request.close();
