@@ -4,7 +4,7 @@ public class PollRequester {
       ZMQ.Context context = ZMQ.context(1);
 
       ZMQ.Socket request = context.socket(ZMQ.REQ);
-      request.bind("tcp://*:5558");
+      request.bind("tcp://127.0.0.1:5558");
 
       String latest = "Nothing Yet";
       while (!Thread.currentThread().isInterrupted()) {
