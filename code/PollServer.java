@@ -4,7 +4,7 @@ public class PollServer {
       ZMQ.Context context = ZMQ.context(1);
 
       ZMQ.Socket stream = context.socket(ZMQ.SUB);
-      stream.bind("tcp://localhost:5557");
+      stream.connect("tcp://localhost:5557");
 
       ZMQ.Socket reply = context.socket(ZMQ.REP);
       reply.bind("tcp://localhost:5558");
