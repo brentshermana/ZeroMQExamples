@@ -1,6 +1,6 @@
 import org.zeromq.ZMQ;
 public class PollStreamer {
-   public static void main(String[] args) {
+   public static void main(String[] args) throws Exception {
       ZMQ.Context context = ZMQ.context(1);
 
       ZMQ.Socket stream = context.socket(ZMQ.PUB);
