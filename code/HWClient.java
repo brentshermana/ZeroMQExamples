@@ -11,9 +11,9 @@ public class HWClient {
         ZMQ.Socket requester = context.socket(ZMQ.REQ);
         requester.connect("tcp://localhost:5555");
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             String request = "Hello";
-            System.out.println("Sending Hello " + requestNbr);
+            System.out.println("Sending Hello " + i);
             requester.send(request.getBytes(), 0);
 
             byte[] reply = requester.recv(0);
