@@ -22,10 +22,17 @@ public static void main (String[] args) throws Exception {
         //  Send 100 tasks
         int total = 0;
         for (int i = 0; i < 100; i++) {
+<<<<<<< HEAD
                 int workload = rand.nextInt(100) + 1;
                 total += workload;
                 System.out.print("Workload " + workload);
                 sender.send(Integer.toString(workload));
+=======
+            int workload = rand.nextInt(200) + 1;
+            total += workload;
+            System.out.println("Workload " + workload);
+            sender.send(Integer.toString(workload));
+>>>>>>> 1bfa2804c4e10c5f4b62e5a125858a678e4204a7
         }
 
         System.out.println("Total expected cost: " + total + " millis");
