@@ -17,11 +17,11 @@ public class OneWayReceiver {
         //  Socket to talk to server
         System.out.println("Collecting 100 values");
         ZMQ.Socket subscriber = context.socket(ZMQ.SUB);
-        subscriber.connect("tcp://localhost:5556");
+        subscriber.connect("tcp://localhost:5557");
 
         int sum = 0;
         for (int i = 0; i < 100; i++) {
-           sum += Integer.parseInt(subscriber);
+           sum += Integer.parseInt(subscriber.recvStr());
         }
 
         System.out.println("Average is " + sum/10.0);

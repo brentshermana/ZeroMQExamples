@@ -15,11 +15,12 @@ public class OneWaySender {
         ZMQ.Context context = ZMQ.context(1);
 
         ZMQ.Socket publisher = context.socket(ZMQ.PUB);
-        publisher.bind("tcp://*:5556");
+        publisher.bind("tcp://*:5557");
 
         Random rand = new Random(System.currentTimeMillis());
         while (!Thread.currentThread ().isInterrupted ()) {
             publisher.send(Integer.toString(rand.nextInt(100)));
+            Thread.sleep(1);
         }
 
         publisher.close ();
