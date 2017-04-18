@@ -1,14 +1,6 @@
-
-
 import java.util.StringTokenizer;
 import org.zeromq.ZMQ;
 
-//pub sub
-//
-//  Weather update client in Java
-//  Connects SUB socket to tcp://localhost:5556
-//  Collects weather updates and finds avg temp in zipcode
-//
 public class OneWayReceiver {
 
     public static void main (String[] args) {
