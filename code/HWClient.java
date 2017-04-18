@@ -1,8 +1,6 @@
 import org.zeromq.ZMQ;
-
 public class HWClient {
-
-    public static void main(String[] args) {
+public static void main(String[] args) {
         ZMQ.Context context = ZMQ.context(1);
 
         //  Socket to talk to server
@@ -12,15 +10,15 @@ public class HWClient {
         requester.connect("tcp://localhost:5555");
 
         for (int i = 0; i < 100; i++) {
-            String request = "Hello";
-            System.out.println("Sending Hello " + i);
-            requester.send(request.getBytes(), 0);
+                String request = "Hello";
+                System.out.println("Sending Hello " + i);
+                requester.send(request.getBytes(), 0);
 
-            byte[] reply = requester.recv(0);
-            System.out.println("Received " + new String(reply));
+                byte[] reply = requester.recv(0);
+                System.out.println("Received " + new String(reply));
         }
 
         requester.close();
         context.term();
-    }
+}
 }
