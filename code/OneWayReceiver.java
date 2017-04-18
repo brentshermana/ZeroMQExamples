@@ -17,9 +17,7 @@ public class OneWayReceiver {
         subscriber.connect("tcp://localhost:5563");
         subscriber.subscribe("B".getBytes());
         while (!Thread.currentThread ().isInterrupted ()) {
-            // Read envelope with address
             String address = subscriber.recvStr ();
-            // Read message contents
             String contents = subscriber.recvStr ();
             System.out.println(address + " : " + contents);
         }
