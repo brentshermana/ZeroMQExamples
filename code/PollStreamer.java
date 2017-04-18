@@ -4,7 +4,7 @@ public class PollStreamer {
       ZMQ.Context context = ZMQ.context(1);
 
       ZMQ.Socket stream = context.socket(ZMQ.PUB);
-      stream.bind("tcp://localhost:5557");
+      stream.bind("tcp://*:5557");
 
       String[] messages = new String[]{"A", "B", "C", "D", "E"};
 
